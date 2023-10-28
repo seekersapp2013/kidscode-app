@@ -1,9 +1,10 @@
 <?php
 
+use App\Http\Controllers\WalletController;
+use App\Models\User;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Route;
-use Illuminate\Support\Facades\Process;
+use TCG\Voyager\Models\Role;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,7 +21,12 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('runVoyage/', function(){
-    Artisan::call('migrate');
-    Artisan::call('db:seed');
+Route::get('/ability', function(){
+    $user = User::find(1);
+    $role = Role::find($user->role_id);
+    return Role::all();
 });
+
+//top up wallet webhook
+Route::post('/wallet/top-up', [WalletController::class, 'topUpWebhook']);
+
