@@ -7,6 +7,7 @@ $balance = 0;
 @else
 $balance = $wallet->balance
 @endif
+
 <span>Balance: {{$balance}}</span>
 
 <div>
