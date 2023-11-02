@@ -2,7 +2,12 @@
 
 @section('content')
 
-<span>Balance: {{$wallet->balance}}</span>
+@if($wallet == NULL)
+$balance = 0;
+@else
+$balance = $wallet->balance
+@endif
+<span>Balance: {{$balance}}</span>
 
 <div>
     <h3>Transaction History</h3>
@@ -16,8 +21,7 @@
 
     @if(count($transactions) === 0)
     <p>You've not made any transaction yet.</p>
-    @endif
-
+    @else
     @foreach($transactions as $transaction)
     <div>
         <span>{{$transaction->type}}</span>
@@ -26,6 +30,9 @@
         <span>{{$transaction->created_at}}</span>
     </div>
     @endforeach
+    @endif
+
+
 </div>
 
 @stop

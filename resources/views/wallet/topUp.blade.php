@@ -21,7 +21,7 @@
     function payWithPaystack(e) {
         e.preventDefault();
         var handler = PaystackPop.setup({
-            key: 'pk_test_081264a910601595cfcb483e71ed0688db3493bd',
+            key: 'pk_live_fbe715ddda4b4f44b4bd7dbaffe673ba3f952143',
             email: document.getElementById('email-address').value,
             amount: document.getElementById('amount').value * 100, // the amount value is multiplied by 100 to convert to the lowest currency unit
             currency: 'NGN',
